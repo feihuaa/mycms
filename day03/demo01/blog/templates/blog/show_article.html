@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 展示文章内容 {% endblock %}
+{% block content %}
+
+<!-----------------------------------内容展示框-------------------------------------->
+<div class="container">
+    <div class="row dengluzhuce">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">
+                        {{ article.title }}<br>
+                    </h1>
+                    <div class="text-right">
+                        作者：{{ article.author.nickname }}&nbsp;&nbsp;|&nbsp;
+                        发表时间：{{ article.publishTime }}
+                    </div>
+                </div>
+                <div class="panel-body">
+                    {% autoescape off %}
+                    {{ article.content }}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <!--<button type="button" class="btn btn-default">-->
+                <!--<a href="/blog/{{article.id}}/update_article/">修改文章</a>-->
+            <!--</button>-->
+            <!--<button type="button" class="btn btn-default">-->
+               <!--<a onclick="window.confirm('您确定要删除这篇文章吗？')" href="/blog/{{article.id}}/delete_article/">删除文章</a>-->
+            <!--</button>-->
+        </div>
+    </div>
+</div>
+<!-----------------------------------内容展示框-------------------------------------->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 展示个人信息 {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/static/blog/img/1.jpg" alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/static/blog/img/2.jpg" alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/static/blog/img/3.jpg" alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">博主栏目</div>
+                <ul class="list-group">
+                    <li class="list-group-item" style="text-align: center">
+                        {% if request.session.loginUser %}
+                        <img src="/static/uepload/{{ request.session.loginUser.header }}" width="100" height="100" alt="..." class="img-circle">
+                        {% else %}
+                        <!--<img style="height:100px, width:100px" src="/static/img/img/headers/4.jpg" alt="">-->
+                        <h4>hello，&nbsp;<a href="{% url 'blog:login' %}">欢迎登录</a></h4>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'blog:index' %}">返回首页</a>
+                    </li>
+                    <li class="list-group-item">
+                        {% if request.session.loginUser %}
+                        <a href="{% url 'blog:list_user' %}">查看所有用户</a>
+                        {% else %}
+                        <a href="{% url 'blog:login' %}">查看所有用户</a>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item">
+                        {% if request.session.loginUser %}
+                        <a href="{% url 'blog:add_article' %}">发表文章</a>
+                        {% else %}
+                        <a href="{% url 'blog:login' %}">发表文章</a>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'blog:reg' %}">注册</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'blog:login' %}">切换用户</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'blog:show_all_article' %}">展示当前用户所有文章</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="panel panel-primary">
+              <div class="panel-heading">用户信息展示</div>
+
+              <div class="panel-body">
+
+                  <table class="table table-bordered table-hover table-striped">
+                      <thead>
+                        <tr>
+                            <td colspan="2">用户信息展示--{{user.nickname}}</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            <tr>
+                                <td>用户头像：</td>
+                                <td style="text-align: center, lend-heigh">
+                                    {% if user.id == request.session.loginUser.id %}
+                                    <img src="/static/uepload/{{ request.session.loginUser.header }}" width="100" height="100" alt="..." class="img-circle">&nbsp;&nbsp;
+                                    <a href="/blog/update_header/"><input type="submit" value="修改头像"></a>
+                                    {% else %}
+                                    <img src="/{{ user.header }}" width="100" height="100" alt="..." class="img-circle">
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>用户名称：</td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>用户昵称：</td>
+                                <td>{{ user.nickname }}</td>
+                            </tr>
+                            <tr>
+                                <td>用户年龄：</td>
+                                <td>{{ user.age }}</td>
+                            </tr>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

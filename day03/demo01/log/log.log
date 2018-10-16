@@ -1,0 +1,25 @@
+ERROR 2018-10-16 19:42:52,740 exception 18792 13880 Internal Server Error: /blog/index/
+Traceback (most recent call last):
+  File "D:\work\web\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "D:\work\web\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\work\web\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\work\web\day03\demo01\blog\views.py", line 26, in index
+    logger = looging.getLogger("django")
+NameError: name 'looging' is not defined
+ERROR 2018-10-16 19:42:58,909 basehttp 18792 13880 "GET /blog/index/ HTTP/1.1" 500 68289
+WARNING 2018-10-16 19:43:40,750 views 18152 14544 首页运行
+WARNING 2018-10-16 19:43:41,209 basehttp 18152 17508 "GET /static/uepload/static/blog/img/headers/4.jpg HTTP/1.1" 404 1724
+WARNING 2018-10-16 19:43:41,211 basehttp 18152 7812 "GET /static/uepload/static/img/img/headers/5_lwKLNSr.jpg HTTP/1.1" 404 1745
+WARNING 2018-10-16 19:43:41,267 basehttp 18152 6368 "GET /static/uepload/static/img/img/headers/25.jpg HTTP/1.1" 404 1724
+WARNING 2018-10-16 19:43:41,289 basehttp 18152 12232 "GET /static/uepload/static/img/img/headers/%E5%9B%9B%E8%B0%8E.jpg HTTP/1.1" 404 1748
+WARNING 2018-10-16 19:43:41,296 basehttp 18152 18492 "GET /static/uepload/static/img/img/headers/9_t9m1LMX.jpg HTTP/1.1" 404 1745
+WARNING 2018-10-16 19:48:35,589 views 14012 15872 首页运行
+WARNING 2018-10-16 19:48:35,688 basehttp 14012 10000 "GET /static/uepload/static/blog/img/headers/4.jpg HTTP/1.1" 404 1724
+WARNING 2018-10-16 19:48:35,698 basehttp 14012 4160 "GET /static/uepload/static/img/img/headers/5_lwKLNSr.jpg HTTP/1.1" 404 1745
+WARNING 2018-10-16 19:48:35,708 basehttp 14012 15132 "GET /static/uepload/static/img/img/headers/25.jpg HTTP/1.1" 404 1724
+WARNING 2018-10-16 19:48:35,761 basehttp 14012 15072 "GET /static/uepload/static/img/img/headers/9_t9m1LMX.jpg HTTP/1.1" 404 1745
+WARNING 2018-10-16 19:48:35,765 basehttp 14012 2380 "GET /static/uepload/static/img/img/headers/%E5%9B%9B%E8%B0%8E.jpg HTTP/1.1" 404 1748
+WARNING 2018-10-16 19:48:35,806 basehttp 14012 9332 "GET /static/uepload/static/blog/img/headers/4.jpg HTTP/1.1" 404 1724

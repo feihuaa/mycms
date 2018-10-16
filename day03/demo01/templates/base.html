@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>博客首页--{% block title %}首页{% endblock %}</title>
+    <link rel="stylesheet" href="/static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="{% static 'js/lib/jquery2.2.4/jquery-2.2.4.min.js' %}"></script>
+
+    <script src="/static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+<!------------------------------页头导航条----------------------------------------->
+<nav class="navbar navbar-default nav navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {# {% if request.session.loginUser %} #}
+                <!--<li calss="navbar-collapse"><a href="./login.html">欢迎您&nbsp;&nbsp;{{ request.session.loginUser.nickname }}</a></li>-->
+            {# {% else %} #}
+                <a class="navbar-brand" href="#">三千博客</a>
+            {# {% endif %} #}
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'blog:index' %}"><span class="glyphicon glyphicon-home"></span> 首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'blog:index' %}"><span class="glyphicon glyphicon-search"></span> 发现</a></li>
+                <li><a href="{% url 'blog:index' %}"><span class="glyphicon glyphicon-heart-empty"></span> 关注</a></li>
+                <li><a href="{% url 'blog:index' %}"><span class="glyphicon glyphicon-comment"></span> 消息 <span class="label label-danger msg">5</span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span> 更多 <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> 发表文章</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-eye-open"></span> 查看文章</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-heart"></span> 查看喜欢的文章</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-star"></span> 查看收藏的文章</a></li>
+                        <li role="separator" class="divider"></li>
+                        <!--<li><a href="/blog/{{user.id}}/update/"><span class="glyphicon glyphicon-user"></span> 完善个人资料</a></li>-->
+                        <li><a href="/blog/{{user.id}}/update/"><span class="glyphicon glyphicon-user"></span> 完善个人资料</a></li>
+                        <!--<li><a href="#"><span class="glyphicon glyphicon-file"></span> 修改登录密码</a></li>-->
+                        <li><a href="{% url 'blog:update_password' %}">修改登录密码</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="#">One more separated link</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入要搜索的内容" >
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                {% if request.session.loginUser %}
+                    <li><a href="{% url 'blog:add_article' %}"><span class="glyphicon glyphicon-pencil"></span> 发表文章</a></li>
+                    <li><a href="./login.html"><span class="glyphicon glyphicon-user"></span> 欢迎您&nbsp;&nbsp;{{ request.session.loginUser.nickname }}</a></li>
+                    <li><a href="{% url 'blog:logout' %}"><span class="glyphicon glyphicon-plus-sign"></span> 退出</a></li>
+                {% else %}
+                    <li><a href="{% url 'blog:login' %}"><span class="glyphicon glyphicon-pencil"></span> 发表文章</a></li>
+                    <li><a href="{% url 'blog:reg' %}"><span class="glyphicon glyphicon-plus-sign"></span> 注册新用户</a></li>
+                    <li><a href="{% url 'blog:login' %}"><span class="glyphicon glyphicon-ok-sign"></span> 用户登录</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!------------------------------页头导航条----------------------------------------->
+{% block content %}
+<!--主要内容展示区域-->
+{% endblock %}
+<!------------------------------页脚样式---------------------------------------->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ul class="list-inline">
+                <li><a href="http://www.baidu.com">百度一下</a></li>
+                <li><a href="http://jianshu.com">简书</a></li>
+                <li><a href="http://taobao.com">淘宝网</a></li>
+                <li><a href="http://www.baidu.com">百度一下</a></li>
+                <li><a href="http://jianshu.com">简书</a></li>
+                <li><a href="http://taobao.com">淘宝网</a></li>
+                <li><a href="http://www.baidu.com">百度一下</a></li>
+                <li><a href="http://jianshu.com">简书</a></li>
+                <li><a href="http://taobao.com">淘宝网</a></li>
+                <li><a href="http://www.baidu.com">百度一下</a></li>
+                <li><a href="http://jianshu.com">简书</a></li>
+                <li><a href="http://taobao.com">淘宝网</a></li>
+            </ul>
+            <p class="text-muted">版权所有&copy;盗版必究 公安网站备案编号32341234123512</p>
+            <p class="text-muted">增值电信业务经营许可证B2-20090108　电信与信息服务业务经营许可证000007号</p>
+            <p class="text-muted">广播电视节目制作经营许可证（京）字第828号 甲测资字1100078 京公网安备11000002000016号</p>
+        </div>
+    </div>
+</div>
+</body>

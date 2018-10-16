@@ -1,0 +1,23 @@
+body{
+    padding-top:70px;
+}
+.msg{
+    font-size:8px;
+    font-weight:100;
+    padding:1px 3px;
+}
+.img-touxiang{
+    width:50px;
+    height:50px;
+}
+.text-zuozhe h4{
+    margin-top:5px;
+    font-size:16px;
+}
+.text-zuozhe p{
+    font-size:12px;
+    color:#888;
+}
+.text-tuijie p{
+    margin-left:20px;
+}
