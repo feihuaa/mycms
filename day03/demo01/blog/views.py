@@ -283,9 +283,9 @@ def add_article(request):
 
 		#数据校验
 		if title is None:
-			return render(request, "blog/update.html", {"msg": "标题输入错误"})
+			return render(request, "blog/add_article.html", {"msg": "标题输入错误"})
 		# if age > 100:
-		# 	return render(request, "blog/update.html", {"msg": "年龄太大就安静一点吧"})
+		# 	return render(request, "blog/add_article.html", {"msg": "年龄太大就安静一点吧"})
 
 		article = models.Article(title=title, content=content, author=author)
 		article.save()
